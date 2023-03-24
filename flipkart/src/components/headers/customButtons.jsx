@@ -9,16 +9,19 @@ import LoginDialog from "../Login/loginDialogue";
 import { useState,useContext } from "react";
 import { DataContext } from "../../context/dataProvider";
 import Profile from "./profile";
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   box: {
     display: "flex",
+    [theme.breakpoints.down("md")]:{
+      display:"block"
+    }
   },
   loginbutton: {
     marginRight: "40px",
     background: "#ffffff",
     color: "#ffffff",
   },
-});
+}));
 export default function CustomButtons() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);

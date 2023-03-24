@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../redux/actions/productActions";
 import Actionitem from "./Actionitem";
+import ProductDetail from "./ProductDetails";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -25,8 +26,7 @@ const DetailView = () => {
     if (product && id != product.id) dispatch(getProductDetails(id));
   }, [dispatch, id, loading, product]);
   const classes = useStyles();
-  const fassured =
-    "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
+  
 
   return (
     <Box className={classes.Component}>
@@ -36,24 +36,7 @@ const DetailView = () => {
             <Actionitem product={product} />
           </Grid>
           <Grid item lg={8} md={8} sm={8} xs={12} style={{marginTop:"50px"}}>
-            <Typography>{product.title.longTitle}</Typography>
-            <Typography
-              style={{ marginTop: "5px", color: "#878787", fontSize: "14px" }}
-            >
-              8 ratings & 5 reviews
-              <Box component="span">
-                <img
-                  src={fassured}
-                  alt="fassured"
-                  style={{ width: "77px", marginLeft: "20px" }}
-                />
-              </Box>
-            </Typography>
-            <Typography>
-              <Box component="span" style={{fontSize:"28px"}}>₹{product.price.cost}</Box>&nbsp;&nbsp;
-              <Box component="span" style={{color:"#878787"}}><strike>₹{product.price.mrp}</strike></Box>&nbsp;&nbsp;&nbsp;
-              <Box component="span" style={{color:"#388e3c"}}>{product.price.discount}</Box>
-            </Typography>
+            <ProductDetail product={product} />
           </Grid>
         </Grid>
       )}
