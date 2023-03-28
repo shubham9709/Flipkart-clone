@@ -1,6 +1,6 @@
 //importing styles
 import * as React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Badge } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 import { makeStyles } from "@material-ui/core";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -8,7 +8,9 @@ import { fontSize } from "@mui/system";
 import LoginDialog from "../Login/loginDialogue";
 import { useState,useContext } from "react";
 import { DataContext } from "../../context/dataProvider";
+import {Link} from "react-router-dom";
 import Profile from "./profile";
+import { useSelector } from "react-redux";
 const useStyles = makeStyles(theme => ({
   box: {
     display: "flex",
@@ -29,6 +31,7 @@ export default function CustomButtons() {
   const openDialog = () => {
     setOpen(true);
   };
+  const {cartItems} = useSelector(state=> state.cart);
   
   return (
     <Box className={classes.box}>
@@ -81,14 +84,16 @@ export default function CustomButtons() {
         More
       </Typography>
 
-      <Box
-        style={{ marginRight: "40px", display: "flex", alignItems: "center",marginTop :'1px' }}
+      <Link to="/cart"
+        style={{ marginRight: "40px", display: "flex", alignItems: "center",marginTop :'1px', textDecoration:"none", color:"#fff" }}
       >
-        <ShoppingCartIcon fontSize= 'small' />
-        <Typography style={{ alignItems: "center", fontSize: "16px",fontWeight: "bold" }}>
+        <Badge badgeContent={cartItems.length} color="secondary">
+          <ShoppingCartIcon fontSize= 'small' />
+        </Badge>
+        <Typography style={{ alignItems: "center", fontSize: "16px",fontWeight: "bold", marginLeft:"10px" }}>
           Cart
         </Typography>
-      </Box>
+      </Link>
       <LoginDialog open={open} setOpen={setOpen} />
     </Box>
   );
