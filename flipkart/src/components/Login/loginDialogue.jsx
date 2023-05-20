@@ -93,7 +93,7 @@ const LoginDialog = ({ open, setOpen }) => {
   };
   const onInputChange = (e) => {
     setSignUp({...signUp,[e.target.name]: e.target.value});
-    
+    // console.log(signUp);
   }
   const loginUser = async () => {
     let response =await authenticateLogIn(logIn);

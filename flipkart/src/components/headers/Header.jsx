@@ -19,6 +19,7 @@ import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: "3rem",
     backgroundColor: "#2874f0",
   },
   box: {
@@ -42,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  PlusImage: {
+    width: 10,
+    height: 10,
+    marginLeft: 2,
+  },
 }));
-const PlusImage = styled("img")({
-  width: 10,
-  height: 10,
-  marginLeft: 2,
-});
 
 const Header = () => {
   const classes = useStyles();
@@ -64,7 +65,7 @@ const Header = () => {
   };
 
   const list = () => (
-    <Box syle={{width:"200px"}} onClose={handleClose}>
+    <Box syle={{ width: "200px" }} onClose={handleClose}>
       <List>
         <ListItem button>
           <CustomButtons />
@@ -95,7 +96,7 @@ const Header = () => {
                 Plus
               </Box>
             </Typography>
-            <PlusImage src={subURL} alt="Plus" />
+            <img className={classes.PlusImage} src={subURL} alt="Plus-logo" />
           </Box>
         </Link>
         <Search />
