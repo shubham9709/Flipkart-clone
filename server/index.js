@@ -38,7 +38,7 @@ app.get("/*", function (req, res) {
 });
 //AWS connection ends
 Connection();
-app.listen(7001, function () {
+app.listen(7000, function () {
   console.log("Server started at port 7000");
 });
 DefaultData();
